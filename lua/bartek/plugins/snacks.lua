@@ -5,7 +5,6 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
-		dashboard = { enabled = true },
 		explorer = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
@@ -436,7 +435,7 @@ return {
 			mode = { "n", "v" },
 		},
 		{
-			"<leader>gg",
+			"<leader>lg",
 			function()
 				Snacks.lazygit()
 			end,
@@ -450,18 +449,41 @@ return {
 			desc = "Dismiss All Notifications",
 		},
 		{
-			"<c-/>",
+			"<leader>th",
 			function()
-				Snacks.terminal()
+				Snacks.terminal(nil, {
+					win = {
+						style = "horizontal",
+					},
+				})
 			end,
-			desc = "Toggle Terminal",
+			desc = "Open Horizontal Terminal",
 		},
+
 		{
-			"<c-_>",
+			"<M-f>",
 			function()
-				Snacks.terminal()
+				Snacks.terminal(nil, {
+					win = {
+						style = "float",
+						width = math.floor(vim.o.columns * 0.8),
+						height = math.floor(vim.o.lines * 0.8),
+						zindex = 100,
+						title = "⚡ Terminal",
+						border = "rounded",
+					},
+				})
 			end,
-			desc = "which_key_ignore",
+			desc = "Open Floating Terminal",
+			mode = { "n", "t" },
+		},
+
+		{
+			"<leader>tv",
+			function()
+				Snacks.terminal(nil, { win = { style = "vertical" } })
+			end,
+			desc = "Open Vertical Terminal",
 		},
 		{
 			"]]",

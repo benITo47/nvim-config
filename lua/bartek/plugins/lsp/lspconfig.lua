@@ -42,12 +42,6 @@ return {
 				opts.desc = "Show line diagnostics"
 				map("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-				opts.desc = "Go to previous diagnostic"
-				map("n", "[d", vim.diagnostic.goto_prev, opts)
-
-				opts.desc = "Go to next diagnostic"
-				map("n", "]d", vim.diagnostic.goto_next, opts)
-
 				opts.desc = "Show documentation for what is under cursor"
 				map("n", "K", vim.lsp.buf.hover, opts)
 
