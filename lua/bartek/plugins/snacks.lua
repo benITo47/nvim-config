@@ -458,6 +458,7 @@ return {
 				})
 			end,
 			desc = "Open Horizontal Terminal",
+			mode = { "n", "t" },
 		},
 
 		{
@@ -476,14 +477,6 @@ return {
 			end,
 			desc = "Open Floating Terminal",
 			mode = { "n", "t" },
-		},
-
-		{
-			"<leader>tv",
-			function()
-				Snacks.terminal(nil, { win = { style = "vertical" } })
-			end,
-			desc = "Open Vertical Terminal",
 		},
 		{
 			"]]",

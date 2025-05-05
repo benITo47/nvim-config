@@ -52,9 +52,9 @@ return {
 
 				api.config.mappings.default_on_attach(bufnr)
 
-				vim.keymap.set("n", "<CR>", api.node.open.tab, opts("Open: New Tab"))
-				vim.keymap.set("n", "<Tab>", api.node.open.edit, opts("Open: Current Tab"))
-				vim.keymap.del("n", "<BS>", opts("Close Directory"))
+				-- vim.keymap.set("n", "<CR>", api.node.open.tab, opts("Open: New Tab"))
+				-- vim.keymap.set("n", "<Tab>", api.node.open.edit, opts("Open: Current Tab"))
+				-- vim.keymap.del("n", "<BS>", opts("Close Directory"))
 			end,
 		})
 
