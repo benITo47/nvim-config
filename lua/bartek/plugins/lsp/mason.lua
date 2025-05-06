@@ -33,7 +33,7 @@ return {
 				"ltex", --tex + markdown
 				"ts_ls", -- ts + react
 				"bashls",
-				"dockerls",
+				"rust-analyzer",
 			},
 		})
 
@@ -48,6 +48,7 @@ return {
 				"sql-formatter",
 				"pylint",
 				"eslint_d",
+				"rustfmt",
 			},
 		})
 	end,

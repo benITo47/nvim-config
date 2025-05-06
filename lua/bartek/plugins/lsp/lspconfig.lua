@@ -131,6 +131,12 @@ return {
 				})
 			end,
 
+			["rust-analyzer"] = function()
+				lspconfig.dockerls.setup({
+					capabilities = capabilities,
+					filetypes = { "rust" },
+				})
+			end,
 			["dockerls"] = function()
 				lspconfig.dockerls.setup({
 					capabilities = capabilities,
@@ -151,7 +157,7 @@ return {
 						"clangd",
 						"--background-index",
 						"-j=12",
-						"--query-driver=/usr/bin/**/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
+						"--query-driver=/opt/homebrew/opt/llvm/bin/clang-*,/bin/clang,/bin/clang++,/usr/bin/gcc,/usr/bin/g++",
 						"--clang-tidy",
 						"--clang-tidy-checks=*",
 						"--all-scopes-completion",

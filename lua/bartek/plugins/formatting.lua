@@ -23,6 +23,7 @@ return {
 				cpp = { "clang-format" },
 				sh = { "beautysh" },
 				bash = { "beautysh" },
+				rust = { "rustfmt" },
 				zsh = { "beautysh" },
 				sql = { "sql-formatter" },
 			},

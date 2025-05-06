@@ -10,9 +10,35 @@ return {
 		input = { enabled = true },
 		notifier = {
 			enabled = true,
-			timeout = 3000,
+			timeout = 2000,
 		},
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			files = { hidden = true },
+			sources = {
+				explorer = { -- HERE!
+					enabled = true,
+					hidden = true,
+					auto_close = false,
+					win = {
+						list = {
+							keys = {
+								["<CR>"] = {
+									{ "pick_win", "confirm" },
+									mode = { "n", "i" },
+									desc = "Open in new tab with window picker",
+								},
+								["<Tab>"] = {
+									{ "pick_win", "jump" },
+									mode = { "n", "i" },
+									desc = "Open in current tab with window picker",
+								},
+							},
+						},
+					},
+				},
+			},
+		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = true },
@@ -26,6 +52,35 @@ return {
 	},
 	keys = {
 		-- Top Pickers & Explorer
+
+		{
+			"<C-n>",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "Toggle file explorer",
+		},
+		{
+			"<leader>et",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "Toggle file explorer",
+		},
+		{
+			"<leader>ef",
+			function()
+				Snacks.explorer({ focus_file = true })
+			end,
+			desc = "Toggle file explorer on current file",
+		},
+		{
+			"<leader>er",
+			function()
+				Snacks.explorer({ reload = true })
+			end,
+			desc = "Refresh file explorer",
+		},
 		{
 			"<leader>fs",
 			function()
@@ -529,9 +584,7 @@ return {
 				-- Create some toggle mappings
 				Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
 				Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-				Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
 				Snacks.toggle.diagnostics():map("<leader>ud")
-				Snacks.toggle.line_number():map("<leader>ul")
 				Snacks.toggle
 					.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
 					:map("<leader>uc")
