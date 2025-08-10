@@ -37,10 +37,10 @@ return {
 				map("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
 				opts.desc = "Show buffer diagnostics"
-				map("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+				map("n", "<leader>dD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
 				opts.desc = "Show line diagnostics"
-				map("n", "<leader>d", vim.diagnostic.open_float, opts)
+				map("n", "<leader>dd", vim.diagnostic.open_float, opts)
 
 				opts.desc = "Show documentation for what is under cursor"
 				map("n", "K", vim.lsp.buf.hover, opts)
@@ -131,7 +131,7 @@ return {
 				})
 			end,
 
-			["rust-analyzer"] = function()
+			["rust_analyzer"] = function()
 				lspconfig.dockerls.setup({
 					capabilities = capabilities,
 					filetypes = { "rust" },
@@ -184,6 +184,21 @@ return {
 					filetypes = { "python" },
 				})
 			end,
+			-- ["sourcekit"] = function()
+			-- 	lspconfig.sourcekit.setup({
+			-- 		capabilities = capabilities,
+			-- 	})
+			-- end,
+		})
+		lspconfig.sourcekit.setup({
+			-- capabilities = capabilities,
+			capabilities = {
+				workspace = {
+					didChangeWatchedFiles = {
+						dynamicRegistration = true,
+					},
+				},
+			},
 		})
 	end,
 }

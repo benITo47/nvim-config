@@ -11,6 +11,7 @@ return {
 			typescriptreact = { "eslint_d" },
 			svelte = { "eslint_d" },
 			python = { "pylint" },
+			swift = { "swiftlint" },
 			-- c = { "clangtidy" },
 			-- cpp = { "clangtidy" },
 		}

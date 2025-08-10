@@ -33,7 +33,8 @@ return {
 				"ltex", --tex + markdown
 				"ts_ls", -- ts + react
 				"bashls",
-				"rust-analyzer",
+				"rust_analyzer",
+				-- "sourcekit",
 			},
 		})
 

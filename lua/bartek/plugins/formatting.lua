@@ -24,6 +24,7 @@ return {
 				sh = { "beautysh" },
 				bash = { "beautysh" },
 				rust = { "rustfmt" },
+				swift = { "swiftformat" },
 				zsh = { "beautysh" },
 				sql = { "sql-formatter" },
 			},
