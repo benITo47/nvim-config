@@ -13,6 +13,8 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local map = vim.keymap.set
 
+		-- This LspAttach autocommand is the correct way to set keymaps
+		-- and is preserved from your original config.
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -58,15 +60,18 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		mason_lspconfig.setup_handlers({
+		mason_lspconfig.setup({
+			-- Default handler: updated to new API
 			function(server_name)
-				lspconfig[server_name].setup({
+				vim.lsp.config(server_name, {
 					capabilities = capabilities,
 				})
+				vim.lsp.enable(server_name)
 			end,
 
+			-- lua_ls: updated to new API
 			["lua_ls"] = function()
-				lspconfig.lua_ls.setup({
+				vim.lsp.config("lua_ls", {
 					capabilities = capabilities,
 					settings = {
 						Lua = {
@@ -79,10 +84,12 @@ return {
 						},
 					},
 				})
+				vim.lsp.enable("lua_ls")
 			end,
 
+			-- eslint: updated to new API
 			["eslint"] = function()
-				lspconfig.eslint.setup({
+				vim.lsp.config("eslint", {
 					capabilities = capabilities,
 					on_attach = function(client, bufnr)
 						vim.api.nvim_create_autocmd("BufWritePre", {
@@ -92,10 +99,12 @@ return {
 					end,
 					filetypes = { "javascript", "javascriptreact" },
 				})
+				vim.lsp.enable("eslint")
 			end,
 
+			-- ltex: updated to new API
 			["ltex"] = function()
-				lspconfig.ltex.setup({
+				vim.lsp.config("ltex", {
 					capabilities = capabilities,
 					settings = {
 						ltex = {
@@ -104,55 +113,69 @@ return {
 					},
 					filetypes = { "markdown", "tex", "plaintex" },
 				})
+				vim.lsp.enable("ltex")
 			end,
 
-			-- If your server name is `ts_ls` instead of `tsserver`
+			-- ts_ls: updated to new API
 			["ts_ls"] = function()
-				lspconfig.ts_ls.setup({
+				vim.lsp.config("ts_ls", {
 					capabilities = capabilities,
 					filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
 					on_attach = function(client, bufnr)
 						client.server_capabilities.documentFormattingProvider = false
 					end,
 				})
+				vim.lsp.enable("ts_ls")
 			end,
 
+			-- html: updated to new API
 			["html"] = function()
-				lspconfig.html.setup({
+				vim.lsp.config("html", {
 					capabilities = capabilities,
 					filetypes = { "html", "htmldjango" },
 				})
+				vim.lsp.enable("html")
 			end,
 
+			-- cssls: updated to new API
 			["cssls"] = function()
-				lspconfig.cssls.setup({
+				vim.lsp.config("cssls", {
 					capabilities = capabilities,
 					filetypes = { "css", "scss", "sass", "less" },
 				})
+				vim.lsp.enable("cssls")
 			end,
 
+			-- rust_analyzer: updated to new API
 			["rust_analyzer"] = function()
-				lspconfig.dockerls.setup({
+				vim.lsp.config("rust_analyzer", {
 					capabilities = capabilities,
 					filetypes = { "rust" },
 				})
+				vim.lsp.enable("rust_analyzer")
 			end,
+
+			-- dockerls: updated to new API
 			["dockerls"] = function()
-				lspconfig.dockerls.setup({
+				vim.lsp.config("dockerls", {
 					capabilities = capabilities,
 					filetypes = { "Dockerfile", "dockerfile" },
 				})
+				vim.lsp.enable("dockerls")
 			end,
 
+			-- bashls: updated to new API
 			["bashls"] = function()
-				lspconfig.bashls.setup({
+				vim.lsp.config("bashls", {
 					capabilities = capabilities,
 					filetypes = { "sh", "bash", "zsh" },
 				})
+				vim.lsp.enable("bashls")
 			end,
 
+			-- clangd: updated to new API
 			["clangd"] = function()
-				lspconfig.clangd.setup({
+				vim.lsp.config("clangd", {
 					cmd = {
 						"clangd",
 						"--background-index",
@@ -176,21 +199,28 @@ return {
 						semanticHighlighting = true,
 					},
 				})
+				vim.lsp.enable("clangd")
 			end,
 
+			-- pyright: updated to new API
 			["pyright"] = function()
-				lspconfig.pyright.setup({
+				vim.lsp.config("pyright", {
 					capabilities = capabilities,
 					filetypes = { "python" },
 				})
+				vim.lsp.enable("pyright")
 			end,
 			-- ["sourcekit"] = function()
-			-- 	lspconfig.sourcekit.setup({
+			-- 	vim.lsp.config("sourcekit", {
 			-- 		capabilities = capabilities,
 			-- 	})
+			-- 	vim.lsp.enable("sourcekit")
 			-- end,
+			--
 		})
-		lspconfig.sourcekit.setup({
+
+		-- Standalone sourcekit setup: updated to new API
+		vim.lsp.config("sourcekit", {
 			-- capabilities = capabilities,
 			capabilities = {
 				workspace = {
@@ -200,5 +230,6 @@ return {
 				},
 			},
 		})
+		vim.lsp.enable("sourcekit")
 	end,
 }

@@ -52,13 +52,29 @@ return {
 		-- configure lualine with modified theme
 		lualine.setup({
 			options = {
-				theme = my_lualine_theme,
+				theme = "auto",
+				globalstatus = true,
+				icons_enabled = true,
+				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
+				always_divide_middle = true,
+				ignore_focus = {
+					"dapui_watches",
+					"dapui_breakpoints",
+					"dapui_scopes",
+					"dapui_console",
+					"dapui_stacks",
+					"dap-repl", --dap-repl and not dap_repl -.-
+				}, --based on https://www.reddit.com/r/neovim/comments/1054k8y/mixing_lualine_and_nvimdapui/
 			},
 			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "branch" },
+				lualine_z = { "progress" },
 				lualine_c = {
 					{
 						"filename",
-						path = 1, -- 0 = filename only, 1 = relative path, 2 = absolute path
+						path = 0, -- 0 = filename only, 1 = relative path, 2 = absolute path
 						symbols = {
 							modified = " ●",
 							readonly = " ",

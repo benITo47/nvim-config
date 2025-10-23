@@ -18,7 +18,7 @@ return {
 			sources = {
 				explorer = { -- HERE!
 					enabled = true,
-					hidden = true,
+					hidden = false,
 					auto_close = false,
 					win = {
 						list = {
