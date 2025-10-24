@@ -13,8 +13,6 @@ return {
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
 		local map = vim.keymap.set
 
-		-- This LspAttach autocommand is the correct way to set keymaps
-		-- and is preserved from your original config.
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -61,7 +59,6 @@ return {
 		end
 
 		mason_lspconfig.setup({
-			-- Default handler: updated to new API
 			function(server_name)
 				vim.lsp.config(server_name, {
 					capabilities = capabilities,
@@ -69,7 +66,6 @@ return {
 				vim.lsp.enable(server_name)
 			end,
 
-			-- lua_ls: updated to new API
 			["lua_ls"] = function()
 				vim.lsp.config("lua_ls", {
 					capabilities = capabilities,
@@ -87,7 +83,6 @@ return {
 				vim.lsp.enable("lua_ls")
 			end,
 
-			-- eslint: updated to new API
 			["eslint"] = function()
 				vim.lsp.config("eslint", {
 					capabilities = capabilities,
@@ -102,7 +97,6 @@ return {
 				vim.lsp.enable("eslint")
 			end,
 
-			-- ltex: updated to new API
 			["ltex"] = function()
 				vim.lsp.config("ltex", {
 					capabilities = capabilities,
@@ -116,7 +110,6 @@ return {
 				vim.lsp.enable("ltex")
 			end,
 
-			-- ts_ls: updated to new API
 			["ts_ls"] = function()
 				vim.lsp.config("ts_ls", {
 					capabilities = capabilities,
@@ -128,7 +121,6 @@ return {
 				vim.lsp.enable("ts_ls")
 			end,
 
-			-- html: updated to new API
 			["html"] = function()
 				vim.lsp.config("html", {
 					capabilities = capabilities,
@@ -137,7 +129,6 @@ return {
 				vim.lsp.enable("html")
 			end,
 
-			-- cssls: updated to new API
 			["cssls"] = function()
 				vim.lsp.config("cssls", {
 					capabilities = capabilities,
@@ -146,7 +137,6 @@ return {
 				vim.lsp.enable("cssls")
 			end,
 
-			-- rust_analyzer: updated to new API
 			["rust_analyzer"] = function()
 				vim.lsp.config("rust_analyzer", {
 					capabilities = capabilities,
@@ -155,7 +145,6 @@ return {
 				vim.lsp.enable("rust_analyzer")
 			end,
 
-			-- dockerls: updated to new API
 			["dockerls"] = function()
 				vim.lsp.config("dockerls", {
 					capabilities = capabilities,
@@ -164,7 +153,6 @@ return {
 				vim.lsp.enable("dockerls")
 			end,
 
-			-- bashls: updated to new API
 			["bashls"] = function()
 				vim.lsp.config("bashls", {
 					capabilities = capabilities,
@@ -173,7 +161,6 @@ return {
 				vim.lsp.enable("bashls")
 			end,
 
-			-- clangd: updated to new API
 			["clangd"] = function()
 				vim.lsp.config("clangd", {
 					cmd = {
@@ -202,7 +189,6 @@ return {
 				vim.lsp.enable("clangd")
 			end,
 
-			-- pyright: updated to new API
 			["pyright"] = function()
 				vim.lsp.config("pyright", {
 					capabilities = capabilities,
@@ -219,7 +205,7 @@ return {
 			--
 		})
 
-		-- Standalone sourcekit setup: updated to new API
+		-- Standalone sourcekit setup
 		vim.lsp.config("sourcekit", {
 			-- capabilities = capabilities,
 			capabilities = {
