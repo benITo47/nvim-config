@@ -6,8 +6,8 @@ opt.relativenumber = true
 opt.number = true
 
 --tabs
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true -- expands tab to spaces
 opt.autoindent = true -- keeps indenation
 opt.smartindent = true -- Smarter auto-indentation
