@@ -5,7 +5,11 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
-		explorer = { enabled = true },
+		explorer = {
+			enabled = true,
+			tree = true,
+			follow_file = true,
+		},
 		indent = { enabled = true },
 		input = { enabled = true },
 		notifier = {
@@ -17,6 +21,13 @@ return {
 			files = { hidden = true },
 			sources = {
 				explorer = { -- HERE!
+					layout = {
+						preset = "sidebar",
+						preview = false,
+						layout = {
+							position = "right",
+						},
+					},
 					enabled = true,
 					hidden = false,
 					auto_close = false,
